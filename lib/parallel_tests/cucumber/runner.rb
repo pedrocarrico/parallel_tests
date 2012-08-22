@@ -40,7 +40,7 @@ module ParallelTests
       end
 
       def self.cucumber_opts
-        if File.exists?('config/cucumber.yml') && (options = File.read('config/cucumber.yml').match(/^parallel:(.*)$/)) 
+        if File.exists?(Dir.glob('{,.config/,config/}cucumber{.yml,.yaml}').first) && (options = File.read(Dir.glob('{,.config/,config/}cucumber{.yml,.yaml}').first).match(/^parallel:(.*)$/))
           options[1].strip
         else
           ''
